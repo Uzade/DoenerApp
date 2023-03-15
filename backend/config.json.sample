@@ -1,0 +1,5 @@
+{
+    "clientId": "[clientID]",
+    "clientSecret": "[clientSecret]",
+    "url": "[currently unused]"
+}

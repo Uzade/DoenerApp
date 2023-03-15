@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install & type nul > Database.db & copy config.json.sample config.json & powershell write-host -back Yellow remember to specify the clientId and clientSecret in the config.json",
     "dev": "npx ts-node index.ts"
   },
   "keywords": [],
