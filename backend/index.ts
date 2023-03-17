@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import axios from "axios"
-import { clientId, clientSecret } from "./config.json"
+import { clientId, clientSecret, frontedUrl } from "./config.json"
 
 var app = express();
 
@@ -13,6 +13,7 @@ app.use(express.json())
 
 app.get("/redirect", async (req, res) => {
     const code = req.query.code
+    console.log("got request", code)
     
     const oauthData = await axios({
         method: "post",
@@ -25,7 +26,7 @@ app.get("/redirect", async (req, res) => {
 			client_secret: clientSecret,
 			code,
 			grant_type: 'authorization_code',
-			redirect_uri: "http://localhost:8003/redirect",
+			redirect_uri: frontedUrl,
 			scope: 'identify',
         }
     })
@@ -38,9 +39,7 @@ app.get("/redirect", async (req, res) => {
         },
     })
 
-    console.log(user.data)
-
-    res.send("Virus is now installing");
+    res.status(200).json(user.data);
 })
 
 app.listen(8003, 
