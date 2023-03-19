@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS users (
+    uid VARCHAR(64) PRIMARY KEY,
+    apiKey VARCHAR(64)
+)
