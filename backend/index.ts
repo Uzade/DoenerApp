@@ -1,9 +1,9 @@
 import express from "express"
 import cors from "cors"
 import axios from "axios"
+import { clientId, clientSecret, frontedUrl } from "./config.json"
 import { Database } from "sqlite3";
 import { PromissingSQLite3 } from "promissing-sqlite3/lib";
-import { clientId, clientSecret } from "./config.json"
 import generateApiKey from 'generate-api-key/dist';
 
 var app = express();
@@ -21,6 +21,7 @@ db.execFile("./sql/NewTable.sql")
 app.get("/redirect", async (req, res) => {
 
     const code = req.query.code
+    console.log("got request", code)
     
     const oauthData = await axios({
         method: "post",
@@ -33,7 +34,7 @@ app.get("/redirect", async (req, res) => {
 			client_secret: clientSecret,
 			code,
 			grant_type: 'authorization_code',
-			redirect_uri: "http://localhost:8003/redirect",
+			redirect_uri: frontedUrl,
 			scope: 'identify',
         }
     })
