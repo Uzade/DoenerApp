@@ -1,0 +1,1 @@
+SELECT apiKey FROM users WHERE uid =?
