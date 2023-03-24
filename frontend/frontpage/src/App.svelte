@@ -18,19 +18,13 @@
   if(code == null){
     //TODO redirect user to login
   }
-
-  onMount( async () => {
-    
-
-  })
-
 </script>
 
 <main>
     {#await userData}
         <h1>loading</h1>
     {:then value}
-        <h1>{value.data.username}</h1>
+        <h1>{value.data.uid}</h1>
     {/await}
 </main>
 
