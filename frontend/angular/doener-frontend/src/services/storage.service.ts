@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Order } from './order';
-import { UUID } from './uuid';
+import { Order } from '../app/utils/order';
+import { UUID } from '../app/utils/uuid';
 @Injectable({
   providedIn: 'root'
 })
