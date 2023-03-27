@@ -4,6 +4,7 @@ import { Database } from "sqlite3"
 import { PromissingSQLite3 } from "promissing-sqlite3/lib"
 import login from "./functions/login"
 import recieveOrders from "./functions/recieveOrders"
+import sendAllOrders from "./functions/sendAllOrders"
 
 var app = express()
 
@@ -19,6 +20,7 @@ db.execFile("./sql/NewTable.sql")
 
 login(app, db)
 recieveOrders(app, db)
+sendAllOrders(app, db)
 
 app.listen(8003, 
     () => console.log("App live on http://localhost:8003")
