@@ -11,7 +11,7 @@ const recieveOrders = (app: Express, db: PromissingSQLite3) => {
             return
         }
 
-        db.execPrepFile("./../sql/order.sql", 
+        db.execPrepFile("./sql/order.sql", 
             req.body.uid,
             req.body.type,
             req.body.option,
