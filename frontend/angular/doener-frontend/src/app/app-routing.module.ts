@@ -7,7 +7,8 @@ import { OrderComponent } from './order/order.component';
 const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'order',component: OrderComponent},
-  {path: 'allorders',component: AllordersComponent}
+  {path: 'allorders',component: AllordersComponent},
+  {path: '**',component: LoginComponent}
 ];
 
 @NgModule({
