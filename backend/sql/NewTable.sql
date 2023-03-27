@@ -1,4 +1,13 @@
 CREATE TABLE IF NOT EXISTS users (
     uid VARCHAR(64) PRIMARY KEY,
     apiKey VARCHAR(64)
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user VARCHAR(64) NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    option VARCHAR(20),
+    message VARCHAR(64),
+    FOREIGN KEY (user) REFERENCES users(uid)
 )
