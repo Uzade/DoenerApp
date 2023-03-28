@@ -1,6 +1,6 @@
-import { UUID } from "./uuid";
 export interface Order {
-    uuid : UUID,
+    uid : string,
+    apiKey? : string,
     type : string,
     option : string,
     message : string;

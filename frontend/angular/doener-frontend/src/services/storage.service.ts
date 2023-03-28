@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Order } from '../app/utils/order';
 import { UUID } from '../app/utils/uuid';
 @Injectable({
@@ -7,25 +8,32 @@ import { UUID } from '../app/utils/uuid';
 })
 export class StorageService {
   uuid : UUID | undefined;
-  url : string = "http://localhost:8003/";
+  readonly url : string = "http://localhost:8003/";
   constructor(private http: HttpClient) { }
 
-
-  public sendOrder(order: Order) {
+  sendOrder(order: Order) {
     //TODO joschka fragen wie
+    this.http.post(this.url+"sendOrder",{
+      uid : this.uuid!.uid,
+      apiKey : this.uuid!.apikey,
+      type : order.type,
+      option : order.option,
+      message : order.message
+    })
   }  
   /**
    * //TODO idk warum this.code nd undefined ist aber funktioniert deshalb :shrug:
    * @param code the code given by the url parameter
    */
-  public getUUID(code:string){
-    this.http.get<UUID>(this.url+"redirect?code="+code).subscribe(data =>{
+  getUUID(code:string){
+    let params = new HttpParams().set('code',code);
+    this.http.get<UUID>(this.url+"redirect", {params} ).subscribe(data =>{
       this.uuid = data;
     }) 
   }
-  public getOrders():Order[]{
+  getOrders():Observable<Order>{
     //TODO joschka fragen wie
-    return new Array
+    return this.http.get<Order>(this.url+"allOrders")
   }
 
     
