@@ -1,7 +1,18 @@
 <nav>
-  <ul>
-    <li><a routerLink="/order" routerLinkActive="active" ariaCurrentWhenActive="page">order</a></li>
-    <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">login</a></li>
-  </ul>
+  <div class="flexbox">
+    <a routerLink="/order" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <div class="box">
+        <p>Order Now</p>
+      </div>
+    </a>
+    <div class="boxBig">
+      <h1>Doener:N</h1>
+    </div>
+    <a routerLink="/allorders" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <div class="box">
+        <p>All Orders</p>  
+      </div>
+    </a>
+  </div>
 </nav>
 <router-outlet></router-outlet>
