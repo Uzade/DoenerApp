@@ -38,6 +38,7 @@ export class OrderComponent implements OnInit{
   }
 
   submit(typ:HTMLInputElement,options:HTMLInputElement,message:HTMLInputElement){
+    this.submitFailed = false;
     if(typ.value == "" || options.value == ""){
       this.submitFailed = true;
     }
