@@ -2,6 +2,8 @@
 <p>order works!</p>
 
 
-<button> (onClick)="submit()"</button>
-
+<button (click)="submit()"> SUBMIT</button>
+<div *ngIf="submitFailed===true">
+    <h1>Submit Failed</h1>
+</div>
 

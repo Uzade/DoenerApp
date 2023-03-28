@@ -14,8 +14,8 @@ export class StorageService {
   sendOrder(order: Order) {
     //TODO joschka fragen wie
     this.http.post(this.url+"sendOrder",{
-      uid : this.uuid!.uid,
-      apiKey : this.uuid!.apikey,
+      uid : order.uid,
+      apiKey : order.apiKey,
       type : order.type,
       option : order.option,
       message : order.message
