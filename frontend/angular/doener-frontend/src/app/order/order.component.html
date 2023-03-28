@@ -1,9 +1,13 @@
-
-<p>order works!</p>
-
-
-<button (click)="submit()"> SUBMIT</button>
-<div *ngIf="submitFailed===true">
-    <h1>Submit Failed</h1>
+<div>
+    <p>DoenerTyp</p>
+    <input type="text" #typ>
+    <p>Optionen</p>
+    <input type="text" #options>
+    <p>Message</p>
+    <input type="text" #message>
+</div>
+<button (click)="submit(typ,options,message)"> SUBMIT</button>
+<div *ngIf="submitFailed">
+    <p>Submit Failed</p>
 </div>
 

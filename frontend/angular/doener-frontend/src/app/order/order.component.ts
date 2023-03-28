@@ -10,14 +10,13 @@ import { Order } from '../utils/order';
 export class OrderComponent implements OnInit{
 
   constructor(
-    private route:ActivatedRoute
-    ,private router:Router
-    ,private storage: StorageService
+    private route:ActivatedRoute,
+    private router:Router,
+    private storage: StorageService
   ) { }
 
   code : any;
-  submitFailed : any;
-
+  submitFailed : boolean = false;
   ngOnInit(): void  {
     this.route.queryParams
       .subscribe(params => {
@@ -38,16 +37,17 @@ export class OrderComponent implements OnInit{
     }
   }
 
-  submit(){
-    console.log("Hallo")
-    this.submitFailed = true;
-    let test : Order = {
-      message : "Hallo",
-      option : "Einmal mit allem",
-      type : "sehr scharf",
+  submit(typ:HTMLInputElement,options:HTMLInputElement,message:HTMLInputElement){
+    if(typ.value == "" || options.value == ""){
+      this.submitFailed = true;
+    }
+    let order : Order = {
+      message : message.value,
+      option : options.value,
+      type : typ.value,
       uid : this.storage.uuid!.uid,
       apiKey : this.storage.uuid?.apikey
     }
-    this.storage.sendOrder(test)
+    this.storage.sendOrder(order)
   }
 }

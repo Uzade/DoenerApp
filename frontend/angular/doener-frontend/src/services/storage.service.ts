@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../app/utils/order';
 import { UUID } from '../app/utils/uuid';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class StorageService {
+  
   uuid : UUID | undefined;
   readonly url : string = "http://localhost:8003/";
   constructor(private http: HttpClient) { }
