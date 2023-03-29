@@ -11,12 +11,21 @@ const recieveOrders = (app: Express, db: PromissingSQLite3) => {
             return
         }
 
-        db.execPrepFile("./sql/order.sql", 
+        try {
+            await db.execPrepFile("./sql/order.sql", 
             req.body.uid,
             req.body.type,
             req.body.option,
             req.body.message
         )
+        } catch (e) {
+            res.status(500).json({
+                Problem: "a query on the database could not have been executed",
+                fullError: e
+            })
+            return
+        }
+        
 
         res.status(201).json({order: "send sucessfully"})
     })
