@@ -4,9 +4,17 @@ import { Express } from "express";
 const sendAllOrders = (app: Express, db: PromissingSQLite3) => {
     app.get('/allOrders', async (_req, res) => {
 
-        const orders = await db.allFile("./sql/getAllOrders.sql")
-
-        res.status(200).json(orders)
+        try{
+            const orders = await db.allFile("./sql/getAllOrders.sql")
+            res.status(200).json(orders)
+            
+        } catch (e) {
+            res.status(500).json({
+                Problem: "a query on the database could not have been executed",
+                fullError: e
+            })
+            return
+        }
 
     })
 }
