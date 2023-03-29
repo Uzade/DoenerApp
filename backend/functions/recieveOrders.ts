@@ -11,6 +11,11 @@ const recieveOrders = (app: Express, db: PromissingSQLite3) => {
             return
         }
 
+        if(req.body.type == null || req.body.option == null || req.body.message == null){
+            res.status(400).json({Problem: "you did not specifie all of the required arguments"})
+            return
+        }
+
         try {
             await db.execPrepFile("./sql/order.sql", 
             req.body.uid,
