@@ -3,18 +3,29 @@ import { PromissingSQLite3 } from "promissing-sqlite3/lib";
 import generateApiKey from 'generate-api-key/dist';
 import getOauthData from "./getOauthData";
 import getUserData from "./getUserData";
+import { AxiosResponse } from "axios";
 
 const login = (app: Express, db: PromissingSQLite3) => {
     app.get("/redirect", async (req, res) => {
 
         const code = req.query.code
-        console.log("got request", code)
+        let user: AxiosResponse<any, any>
         
-        const oauthData = await getOauthData(code as string)
-
-        const user = await getUserData(oauthData.data.token_type, oauthData.data.access_token)
-
-        console.log(user.data)
+        if(code == null){
+            res.status(400).json({Problem: "please specify a valid discord OAuth-code"})
+            return
+        }
+        
+        try {
+            const oauthData = await getOauthData(code as string)
+            user = await getUserData(oauthData.data.token_type, oauthData.data.access_token)
+        } catch (e) {
+            res.status(400).json({
+                Problem: "A connection to the Discord server could not have been established",
+                fullError: e
+            })
+            return
+        }
 
         const apiKey = generateApiKey({
             method: "string",
@@ -22,7 +33,15 @@ const login = (app: Express, db: PromissingSQLite3) => {
             max: 61
         })
 
-        db.execPrepFile("./sql/login.sql", user.data.id, apiKey, apiKey)
+        try{
+            await db.execPrepFile("./sql/login.sql", user.data.id, apiKey, apiKey)
+        } catch(e){
+            res.status(500).json({
+                Problem: "Internal database error",
+                fullError: e
+            })
+            return
+        }
 
         res.status(200).json({
             uid: user.data.id,
