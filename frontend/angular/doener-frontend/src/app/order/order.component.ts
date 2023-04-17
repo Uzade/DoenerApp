@@ -12,7 +12,6 @@ export class OrderComponent implements OnInit{
 
   constructor(
     private route:ActivatedRoute,
-    private router:Router,
     private storage: StorageService
   ) { }
 
@@ -30,11 +29,11 @@ export class OrderComponent implements OnInit{
   }
 
   /**
-   * redirect the user to the login page if the login ether didnt work or he just straight-up went to order
+   * redirect the user to the login page if the login either didnt work or he just straight-up went to order
    */
   public redirect(){
     if(this.code == undefined){
-      this.router.navigate(['/login']);
+      this.storage.gotoLogin();
     }
   }
 
@@ -43,7 +42,6 @@ export class OrderComponent implements OnInit{
     if(typ.value == "" || options.value == ""){
       this.submitFailed = true;
     }
-    console.log("submit",this.storage.uuid)
     let order : Order = {
       message : message.value,
       option : options.value,
@@ -51,7 +49,6 @@ export class OrderComponent implements OnInit{
       uid : this.storage.uuid!.uid,
       apiKey : this.storage.uuid!.apiKey
     }
-    console.log("submit",order)
     this.storage.sendOrder(order)
   }
 }
