@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { OrderComponent } from './order/order.component';
 import { AllordersComponent } from './allorders/allorders.component';
 import { HttpClientModule} from '@angular/common/http';
+import { DumbbookingComponent } from './dumbbooking/dumbbooking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     OrderComponent,
-    AllordersComponent
+    AllordersComponent,
+    DumbbookingComponent
   ],
   imports: [
     BrowserModule,
