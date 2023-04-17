@@ -1,5 +1,7 @@
-<p>allorders works!</p>
-
-<div *ngFor="let order of orders | async">
-    {{ order | json}}
+<div>
+    <ul>
+        <li *ngFor="let order of orders | async; index as i ">
+            {{ order | json}}
+        </li>
+    </ul>
 </div>

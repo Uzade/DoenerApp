@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , NgIterable, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/services/storage.service';
 import { Order } from '../utils/order';
@@ -12,10 +12,11 @@ export class AllordersComponent implements OnInit {
   
   constructor(private storage: StorageService){}
 
-  orders : any; 
+  orders!: Observable<Order[]>; 
 
   ngOnInit(): void {
-      this.orders = this.storage.getOrders()
+    this.orders = this.storage.getOrders()
+    console.log(this.orders)
   }
 
 }

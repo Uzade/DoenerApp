@@ -1,4 +1,4 @@
 export interface UUID {
-    apikey : string;
+    apiKey : string;
     uid : string;
 }

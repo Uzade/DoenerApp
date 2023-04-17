@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { StorageService } from '../../services/storage.service';
 import { Order } from '../utils/order';
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -15,7 +16,7 @@ export class OrderComponent implements OnInit{
     private storage: StorageService
   ) { }
 
-  code : any;
+  code! : string;
   submitFailed : boolean = false;
   ngOnInit(): void  {
     this.route.queryParams
@@ -42,13 +43,15 @@ export class OrderComponent implements OnInit{
     if(typ.value == "" || options.value == ""){
       this.submitFailed = true;
     }
+    console.log("submit",this.storage.uuid)
     let order : Order = {
       message : message.value,
       option : options.value,
       type : typ.value,
       uid : this.storage.uuid!.uid,
-      apiKey : this.storage.uuid?.apikey
+      apiKey : this.storage.uuid!.apiKey
     }
+    console.log("submit",order)
     this.storage.sendOrder(order)
   }
 }

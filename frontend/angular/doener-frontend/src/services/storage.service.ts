@@ -10,33 +10,30 @@ import { UUID } from '../app/utils/uuid';
 
 export class StorageService {
   
-  uuid : UUID | undefined;
+  uuid!: UUID;
   readonly url : string = "http://localhost:8003/";
+
   constructor(private http: HttpClient) { }
 
   sendOrder(order: Order) {
     //TODO joschka fragen wie
-    this.http.post(this.url+"sendOrder",{
-      uid : order.uid,
-      apiKey : order.apiKey,
-      type : order.type,
-      option : order.option,
-      message : order.message
-    })
+    console.log("sendOrder Method",order)
+    this.http.post(this.url+"sendOrder",order).subscribe(e => console.log(e))
   }  
   /**
    * //TODO idk warum this.code nd undefined ist aber funktioniert deshalb :shrug:
    * @param code the code given by the url parameter
    */
-  getUUID(code:string){
+  async getUUID(code:string){
     let params = new HttpParams().set('code',code);
     this.http.get<UUID>(this.url+"redirect", {params} ).subscribe(data =>{
       this.uuid = data;
+      console.log(data)
     }) 
   }
-  getOrders():Observable<Order>{
+  getOrders():Observable<Order[]>{
     //TODO joschka fragen wie
-    return this.http.get<Order>(this.url+"allOrders")
+    return this.http.get<Order[]>(this.url+"allOrders")
   }
 
     
