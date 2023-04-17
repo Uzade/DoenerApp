@@ -16,7 +16,6 @@ export class AllordersComponent implements OnInit {
 
   ngOnInit(): void {
     this.orders = this.storage.getOrders()
-    console.log(this.orders)
   }
 
 }
