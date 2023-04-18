@@ -8,7 +8,6 @@ import { OrderComponent } from './order/order.component';
 import { AllordersComponent } from './allorders/allorders.component';
 import { HttpClientModule} from '@angular/common/http';
 import { DumbbookingComponent } from './dumbbooking/dumbbooking.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,4 +24,5 @@ import { DumbbookingComponent } from './dumbbooking/dumbbooking.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }
