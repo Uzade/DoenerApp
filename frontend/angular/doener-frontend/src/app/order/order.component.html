@@ -1,13 +1,12 @@
 <div>
-    <p>DoenerTyp</p>
+    <p>DoenerType</p>
     <input type="text" #typ>
-    <p>Optionen</p>
+    <p>Options</p>
     <input type="text" #options>
     <p>Message</p>
     <input type="text" #message>
 </div>
 <button (click)="submit(typ,options,message)"> SUBMIT</button>
-<div *ngIf="submitFailed">
-    <p>Submit Failed</p>
+<div *ngIf="submitted">
+    <p>{{feedBack}}</p>
 </div>
-
