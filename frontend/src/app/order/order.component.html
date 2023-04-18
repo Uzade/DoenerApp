@@ -5,8 +5,8 @@
     <input type="text" #options>
     <p>Message</p>
     <input type="text" #message>
-</div>
-<button (click)="submit(typ,options,message)"> SUBMIT</button>
-<div *ngIf="submitted">
-    <p>{{feedBack}}</p>
+    <p><button (click)="submit(typ,options,message)"> SUBMIT</button></p>
+    <div *ngIf="submitted">
+        <p>{{feedBack}}</p>
+    </div>
 </div>
