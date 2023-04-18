@@ -1,0 +1,7 @@
+<div>
+    <ul>
+        <li *ngFor="let order of orders | async; index as i ">
+            <app-dumbbooking [booking] = order></app-dumbbooking>
+        </li>
+    </ul>
+</div>

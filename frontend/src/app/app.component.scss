@@ -1,0 +1,39 @@
+nav {
+    font-size: small
+}
+
+.box {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1em;
+    width: 5em;
+    padding: 7px;
+    margin: 7px;
+    background-color: #248046;
+}
+
+.boxBig {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    width: 8em;
+    padding: 10px;
+    background-color: #5662F6;
+}
+
+.flexbox {
+    justify-content: space-between;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    color: white;
+}
