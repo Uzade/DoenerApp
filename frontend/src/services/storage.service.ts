@@ -13,7 +13,7 @@ export class StorageService {
 
   isAlrLoaded!:boolean;
   uuid!: UUID;
-  readonly backendURL : string = "http://localhost:8003/";
+  readonly backendURL : string = "http://uzade.de/api/";
 
   constructor(private http: HttpClient,private router:Router) { }
 
