@@ -28,6 +28,6 @@ login(app, db)
 recieveOrders(app, db)
 sendAllOrders(app, db)
 
-app.listen(8003, 
-    () => console.log("App live on http://localhost:8003")
+app.listen(80, 
+    () => console.log("App live on http://localhost:80")
 );
