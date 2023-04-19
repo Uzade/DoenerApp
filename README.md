@@ -22,5 +22,4 @@ message: string
 All orders can be retrieved from the `/getOrders` endpoint. There is no authentification required
 
 ## Frontend
-there is no frontend atm.
-Complete this if you implement the frontend.
+there is frontend now.
