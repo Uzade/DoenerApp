@@ -48,6 +48,10 @@ export class OrderComponent implements OnInit{
       apiKey : this.storage.uuid!.apiKey
     }
 
+    typ.value = "";
+    options.value = "";
+    message.value = "";
+    
     this.storage.sendOrder(order)
   }
   private initVal() {
