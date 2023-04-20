@@ -1,11 +1,16 @@
 <div>
-    <p>DoenerType</p>
-    <input type="text" #typ>
+    <label for="doenertype">DönerType: </label>
+    <br>
+    <select name="DoenerType" id="doenertype">
+        <option value="dueruem">Dürüm</option>
+        <option value="doener">Döner</option>
+        <option value="doenerbox">Dönerbox</option>
+    </select>
     <p>Options</p>
     <input type="text" #options>
     <p>Message</p>
     <input type="text" #message>
-    <p><button (click)="submit(typ,options,message)"> SUBMIT</button></p>
+    <p><button (click)="submit(typ,options,message)">SUBMIT</button></p>
     <div *ngIf="submitted">
         <p>{{feedBack}}</p>
     </div>
