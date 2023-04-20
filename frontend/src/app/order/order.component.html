@@ -1,16 +1,25 @@
-<div>
-    <label for="doenertype">DönerType: </label>
-    <br>
-    <select name="DoenerType" id="doenertype" #typ>
-        <option value="dueruem">Dürüm</option>
-        <option value="doener">Döner</option>
-        <option value="doenerbox">Dönerbox</option>
-    </select>
+<div id="background">
+    <div>
+        <p for="doenertype">DönerType</p>
+    </div>
+    <div class="inputbox">
+        <select name="DoenerType" id="doenertype" #typ>
+            <option value="dueruem">Dürüm</option>
+            <option value="doener">Döner</option>
+            <option value="doenerbox">Dönerbox</option>
+        </select>
+    </div>
     <p>Options</p>
-    <input type="text" #options>
+    <div class="inputbox">
+        <input type="text" #options class="inputbox">
+    </div>
     <p>Message</p>
-    <input type="text" #message>
-    <p><button (click)="submit(typ,options,message)">SUBMIT</button></p>
+    <div class="inputbox">
+        <input type="text" #message class="inputbox">
+    </div>
+    <p id="submit-button">
+        <button (click)="submit(typ,options,message)">SUBMIT</button>
+    </p>
     <div *ngIf="submitted">
         <p>{{feedBack}}</p>
     </div>
