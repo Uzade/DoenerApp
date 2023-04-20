@@ -1,9 +1,13 @@
 import express from "express"
 import cors from "cors"
-import axios from "axios"
-import { clientId, clientSecret } from "./config.json"
+import { Database } from "sqlite3"
+import { PromissingSQLite3 } from "promissing-sqlite3/lib"
+import login from "./functions/login"
+import recieveOrders from "./functions/recieveOrders"
+import sendAllOrders from "./functions/sendAllOrders"
+import schedule from 'node-schedule';
 
-var app = express();
+var app = express()
 
 app.use(cors({
     origin: "*"
@@ -11,38 +15,19 @@ app.use(cors({
 
 app.use(express.json()) 
 
-app.get("/redirect", async (req, res) => {
-    const code = req.query.code
-    
-    const oauthData = await axios({
-        method: "post",
-        url: "https://discord.com/api/oauth2/token",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        data: {
-            client_id: clientId,
-			client_secret: clientSecret,
-			code,
-			grant_type: 'authorization_code',
-			redirect_uri: "http://localhost:8003/redirect",
-			scope: 'identify',
-        }
-    })
+const db = new PromissingSQLite3(new Database("./Database.db"))
 
-    const user = await axios({
-        method: "get",
-        url: "https://discord.com/api/users/@me",
-        headers: {
-            authorization: `${oauthData.data.token_type} ${oauthData.data.access_token}`,
-        },
-    })
+db.execFile("./sql/NewTable.sql")
 
-    console.log(user.data)
+schedule.scheduleJob({hour: 0, minute: 0}, () => {
+    console.log('All Doeners have been deleted');
+    db.execFile("./sql/clearOrders.sql")
+  });
 
-    res.send("Virus is now installing");
-})
+login(app, db)
+recieveOrders(app, db)
+sendAllOrders(app, db)
 
-app.listen(8003, 
-    () => console.log("App live on http://localhost:8003")
+app.listen(80, 
+    () => console.log("App live on http://localhost:80")
 );

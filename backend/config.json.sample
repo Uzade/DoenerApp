@@ -1,0 +1,6 @@
+{
+    "clientId": "[clientID]",
+    "clientSecret": "[clientSecret]",
+    "frontedUrl": "[the url of the page that calls the backend for authentification]",
+    "url": "[currently unused]"
+}
