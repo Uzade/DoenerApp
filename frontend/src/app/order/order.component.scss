@@ -1,24 +1,45 @@
 #background {
-    background-image: linear-gradient(to right top, #5662f6, #6c60f7, #805df7, #915af7, #a256f6);
-    width: 50%;
+    top: 35vh;
+    left: 35%;
+    background-image: linear-gradient(to right top, #b91bff, #a000e7);
+    width: 30%;
     border-radius: 10px;
     margin:  25px auto;
     padding: 5px;
     text-align: center;
+    position:absolute;
 }
 
-.inputbox {
+.inputbox input, select{
+    background-color: grey;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 7px;
 }
 
 #submit-button {
+    transition: background-color 0.25s ease-in-out;
+
     text-align: center;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1em;
-    width: 50%;
+    width: 20%;
+    margin: 15px auto;
+    background-color: #00e7a0;
+    overflow: hidden;
+}
+
+#submit-button button{
     padding: 7px;
-    margin: 7px;
-    background-color: #248046;
+    color: white;
+    background-color: #FFFFFF00;
+    border: 0;
+    cursor:pointer;
+}
+
+#submit-button:hover{
+    background-color: #e7a000;
 }

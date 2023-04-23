@@ -1,26 +1,33 @@
 <div id="background">
     <div>
-        <p for="doenertype">DönerType</p>
+        <div>
+            <p for="doenertype">DönerType</p>
+        </div>
+        <div class="inputbox">
+            <select name="DoenerType" id="doenertype" #typ>
+                <option value="dueruem">Dürüm</option>
+                <option value="doener">Döner</option>
+                <option value="doenerbox">Dönerbox</option>
+            </select>
+        </div>
     </div>
-    <div class="inputbox">
-        <select name="DoenerType" id="doenertype" #typ>
-            <option value="dueruem">Dürüm</option>
-            <option value="doener">Döner</option>
-            <option value="doenerbox">Dönerbox</option>
-        </select>
+    <div>
+        <p>Options</p>
+        <div class="inputbox">
+            <input type="text" #options class="inputbox">
+        </div>
     </div>
-    <p>Options</p>
-    <div class="inputbox">
-        <input type="text" #options class="inputbox">
+    <div>
+        <p>Message</p>
+        <div class="inputbox">
+            <input type="text" #message class="inputbox">
+        </div>
     </div>
-    <p>Message</p>
-    <div class="inputbox">
-        <input type="text" #message class="inputbox">
+    <div>
+        <div id="submit-button">
+            <button (click)="submit(typ,options,message)">SUBMIT</button>
+        </div>
+        <div *ngIf="submitted">
+            <p>{{feedBack}}</p>
+        </div>
     </div>
-    <p id="submit-button">
-        <button (click)="submit(typ,options,message)">SUBMIT</button>
-    </p>
-    <div *ngIf="submitted">
-        <p>{{feedBack}}</p>
-    </div>
-</div>
