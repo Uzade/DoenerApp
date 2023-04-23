@@ -42,11 +42,7 @@ export class OrderComponent implements OnInit{
     
     this.initVal();
     if(!this.validateTyp(typ.value) || !this.validateOptions(options.value))return;
-
-    typ.value = "";
-    message.value = "";
-    options.value = "";
-
+    
     let order : Order = {
       message : message.value,
       option : options.value,
@@ -54,6 +50,10 @@ export class OrderComponent implements OnInit{
       uid : this.storage.uuid!.uid,
       apiKey : this.storage.uuid!.apiKey
     }
+
+    typ.value = "";
+    message.value = "";
+    options.value = "";
 
     this.storage.sendOrder(order)
   }
