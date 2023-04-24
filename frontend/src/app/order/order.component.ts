@@ -11,7 +11,7 @@ import { Order } from '../utils/order';
 export class OrderComponent implements OnInit{
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private storage: StorageService
   ) {}
 
@@ -39,7 +39,7 @@ export class OrderComponent implements OnInit{
     
     this.initVal();
     if(!this.validateTyp(typ.value) || !this.validateOptions(options.value))return;
-
+    
     let order : Order = {
       message : message.value,
       option : options.value,
@@ -49,9 +49,9 @@ export class OrderComponent implements OnInit{
     }
 
     typ.value = "";
-    options.value = "";
     message.value = "";
-    
+    options.value = "";
+
     this.storage.sendOrder(order)
   }
   private initVal() {

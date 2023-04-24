@@ -1,6 +1,6 @@
 import { HttpClient,HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Injectable, isDevMode } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Order } from '../app/utils/order';
 import { UUID } from '../app/utils/uuid';
 import { Router } from '@angular/router';
@@ -13,7 +13,10 @@ export class StorageService {
 
   isAlrLoaded!:boolean;
   uuid!: UUID;
-  readonly backendURL : string = "https://api.uzade.de/api/";
+  
+  readonly backendURL : string = isDevMode()
+    ? "http://localhost:8003/"
+    : "https://api.uzade.de/";
 
   constructor(private http: HttpClient,private router:Router) { }
 
