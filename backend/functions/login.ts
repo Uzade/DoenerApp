@@ -6,7 +6,7 @@ import getUserData from "./getUserData";
 import { AxiosResponse } from "axios";
 
 const login = (app: Express, db: PromissingSQLite3) => {
-    app.get("/redirect", async (req, res) => {
+    app.get("/api/redirect", async (req, res) => {
 
         const code = req.query.code
         let user: AxiosResponse<any, any>

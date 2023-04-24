@@ -29,9 +29,6 @@ export class OrderComponent implements OnInit{
     this.storage.getUUID(this.code);
   }
 
-  /**
-   * redirect the user to the login page if the login either didnt work or he just straight-up went to order
-   */
   public redirect(){
     if(this.code == undefined){
       this.storage.gotoLogin();
