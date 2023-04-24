@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Order } from '../utils/order';
+
 @Component({
   selector: 'app-dumbbooking',
   templateUrl: './dumbbooking.component.html',

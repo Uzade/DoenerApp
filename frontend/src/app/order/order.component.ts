@@ -11,7 +11,7 @@ import { Order } from '../utils/order';
 export class OrderComponent implements OnInit{
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private storage: StorageService
   ) {}
 
