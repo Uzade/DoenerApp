@@ -1,9 +1,11 @@
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, Subscription, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Order } from '../app/utils/order';
 import { UUID } from '../app/utils/uuid';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { environment } from 'src/app/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 export class StorageService {
   isAlrLoaded!:boolean;
   uuid!: UUID;
-  readonly url : string = "http://localhost:8003/";
+  readonly url : string = environment.base_uri;
 
   constructor(private http: HttpClient,private router:Router) { }
 
