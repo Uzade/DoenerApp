@@ -1,10 +1,9 @@
 import { HttpClient,HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../app/utils/order';
 import { UUID } from '../app/utils/uuid';
 import { Router } from '@angular/router';
-import { environment } from 'src/app/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,9 @@ import { environment } from 'src/app/environment';
 export class StorageService {
   isAlrLoaded!:boolean;
   uuid!: UUID;
-  readonly url : string = environment.base_uri;
+  readonly url : string = isDevMode()
+    ? "http://localhost:8003/"
+    : "https://api.uzade.de/";
 
   constructor(private http: HttpClient,private router:Router) { }
 
