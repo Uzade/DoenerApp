@@ -1,5 +1,5 @@
 <div>
-    {{booking.option}}
-    {{booking.type}}
-    {{booking.message}}
+    <h3>{{booking.type}}</h3>
+    <p>option: {{booking.option}}</p>
+    <p *ngIf="booking.message">message: {{booking.message}}</p>
 </div>

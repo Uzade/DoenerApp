@@ -35,8 +35,7 @@ export class OrderComponent implements OnInit{
     }
   }
   
-  submit(typ:HTMLInputElement,options:HTMLInputElement,message:HTMLInputElement){
-    
+  submit(typ:HTMLSelectElement, options:HTMLInputElement, message:HTMLInputElement){
     this.initVal();
     if(!this.validateTyp(typ.value) || !this.validateOptions(options.value))return;
     
