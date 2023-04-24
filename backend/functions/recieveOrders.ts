@@ -4,7 +4,7 @@ import checkApiKey from "./checkApiKey";
 
 
 const recieveOrders = (app: Express, db: PromissingSQLite3) => {
-    app.post('/sendOrder', async (req, res) => {
+    app.post('/api/sendOrder', async (req, res) => {
 
         if(!await checkApiKey(db, req.body.uid, req.body.apiKey)){
             res.status(401).json({error: "Not autorized"})

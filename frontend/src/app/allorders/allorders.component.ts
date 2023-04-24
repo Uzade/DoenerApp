@@ -1,4 +1,4 @@
-import { Component , NgIterable, OnInit} from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/services/storage.service';
 import { Order } from '../utils/order';

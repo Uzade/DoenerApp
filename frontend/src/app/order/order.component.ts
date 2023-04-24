@@ -11,7 +11,7 @@ import { Order } from '../utils/order';
 export class OrderComponent implements OnInit{
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private storage: StorageService
   ) {}
 
@@ -29,9 +29,6 @@ export class OrderComponent implements OnInit{
     this.storage.getUUID(this.code);
   }
 
-  /**
-   * redirect the user to the login page if the login either didnt work or he just straight-up went to order
-   */
   public redirect(){
     if(this.code == undefined){
       this.storage.gotoLogin();
@@ -41,7 +38,7 @@ export class OrderComponent implements OnInit{
   submit(typ:HTMLSelectElement, options:HTMLInputElement, message:HTMLInputElement){
     this.initVal();
     if(!this.validateTyp(typ.value) || !this.validateOptions(options.value))return;
-
+    
     let order : Order = {
       message : message.value,
       option : options.value,
@@ -49,6 +46,10 @@ export class OrderComponent implements OnInit{
       uid : this.storage.uuid!.uid,
       apiKey : this.storage.uuid!.apiKey
     }
+
+    typ.value = "";
+    message.value = "";
+    options.value = "";
 
     this.storage.sendOrder(order)
   }

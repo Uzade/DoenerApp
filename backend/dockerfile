@@ -1,0 +1,10 @@
+FROM node:18-alpine
+ENV NODE_ENV=production
+WORKDIR /app
+COPY ./dist .
+COPY ./sql ./sql
+COPY ./package* .
+RUN npm install --omit=dev
+RUN touch Database.db
+CMD [ "node", "." ]
+EXPOSE 80

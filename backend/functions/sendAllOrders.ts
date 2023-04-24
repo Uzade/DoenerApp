@@ -2,7 +2,7 @@ import { PromissingSQLite3 } from "promissing-sqlite3/lib"
 import { Express } from "express";
 
 const sendAllOrders = (app: Express, db: PromissingSQLite3) => {
-    app.get('/allOrders', async (_req, res) => {
+    app.get('/api/allOrders', async (_req, res) => {
 
         try{
             const orders = await db.allFile("./sql/getAllOrders.sql")
